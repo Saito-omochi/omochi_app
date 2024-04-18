@@ -14,10 +14,19 @@
                         <img src="{{$subview -> icon}}" alt="アイコン" />
                         {{$subview->profiletext}}
                     </p>
-                    <form method="post" name="form1" action="/{{$sub->id}}/follow/{{$subview->id}}">
-                        @csrf
-                        <a href="javascript:form1.submit()">フォローする</a>
-                    </form>
+                    @if($tf==FALSE)
+                        <form method="post" name="form1" action="/{{$sub->id}}/follow/{{$subview->id}}">
+                            @csrf
+                            <a href="javascript:form1.submit()">フォローする</a>
+                        </form>
+                    @else
+                        <form method="post" name="form2" action="/{{$sub->id}}/delfollow/{{$subview->id}}">
+                            @csrf
+                            @method('DELETE')
+                            <a href="javascript:form2.submit()">フォロー解除する</a>
+                        </form>
+                    @endif
+                    <a href="/{{$sub->id}}/index">ホーム画面へ</a>
                 </div>
                 <div>
                     <p></p>

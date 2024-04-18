@@ -17,6 +17,6 @@
     <div class="link">
         <p><a href=/profile/subregister>新規サブユーザー登録</a></p>
         <p><a href=/profile/select>サブユーザー選択画面</a></p>
-        <p><a href=/profile/index>自分の投稿統合一覧</a></p>
+        <p><a href=/profile/show>自分の投稿統合一覧</a></p>
     </div>
 </x-app-layout>
