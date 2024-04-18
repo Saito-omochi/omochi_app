@@ -19,9 +19,10 @@
                     <p>name（英字8~20文字）<input type="text" id="name" name="user[name]" required minlength="8" maxlength="20" size=20 value={{$sub -> name}} /></p>
                     <p>プロフィール文<textarea name="user[profiletext]">{{$sub->profiletext}}</textarea></p>
                     <p>seacret(鍵垢)
-                        <select name="user[seacret]">
+                        <select name="user[seacret]" value={{$sub->seacret}}>
                             <option value=0>鍵垢off(全体公開)</option>
                             <option value=1>鍵垢on(相互フォロー限定公開)</option>
+                            <option value=2 hidden desabled selected>選択してください</option>
                         </select>
                     </p>
                     <input type="submit" value="送信"/>

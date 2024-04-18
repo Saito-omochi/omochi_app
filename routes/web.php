@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\SubuserController;
+use App\Http\Controllers\CategoryController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -36,6 +37,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
     Route::get('/profile/subregister', [UserController::class, 'subregister']);
+    Route::get('/profile/show', [UserController::class, 'show']);
     Route::post('/profile/subregister', [UserController::class, 'store']);
     
     Route::get('/{sub}/profile/edit', [SubuserController::class, 'profileedit']);
@@ -43,10 +45,16 @@ Route::middleware('auth')->group(function () {
     Route::get('/{sub}/index', [SubuserController::class, 'index']);
     Route::get('/{sub}/create', [SubuserController::class, 'create']);
     Route::get('{sub}/showfollows', [SubuserController::class, 'showfollows']);
+    Route::get('{sub}/showallposts', [SubuserController::class, 'showallposts']);
+    Route::get('{sub}/search', [SubuserController::class, 'search']);
     Route::post('/{sub}/store', [SubuserController::class, 'store']);
     Route::post('/{sub}/profile/{post}/edit', [SubuserController::class, 'edit']);
     Route::post('/{sub}/profile/update', [SubuserController::class, 'update']);
     Route::post('/{sub}/follow/{follow}', [SubuserController::class, 'follow']);
+    Route::delete('/{sub}/delfollow/{follow}', [SubuserController::class, 'delfollow']);
+    Route::delete('/{sub}/delpost/{post}', [SubuserController::class, 'delpost']);
+    
+    Route::get('{sub}/search/{category}', [CategoryController::class, 'showbypost']);
 });
 
 

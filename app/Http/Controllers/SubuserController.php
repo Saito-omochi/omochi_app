@@ -23,7 +23,8 @@ class SubuserController extends Controller
             return view('subusers.show') -> with(['posts' => $posts, 'sub' => $sub]);//プロフィールや投稿の編集が可能な画面を返す
         }else{
             //フォロー情報を入手し、
-            return view('subusers.showothers') -> with(['posts' => $posts, 'sub' => $sub, 'subview' => $subview]);//他人のidが指定された場合は編集ができない画面に遷移
+            $f = Follow::where(['following_id' => $sub->id, 'followed_id' => $subview -> id]) -> exists();
+            return view('subusers.showothers') -> with(['posts' => $posts, 'sub' => $sub, 'subview' => $subview, 'tf' => $f]);//他人のidが指定された場合は編集ができない画面に遷移
         }
     }
     
@@ -47,8 +48,7 @@ class SubuserController extends Controller
         foreach($follows as $follow){
             array_push($followed_id, $follow -> followed_id);//followed_idだけを取り出してリストfollowed_idに格納する
         }
-        //dd($followed_id);
-        //$posts = Post::with('sub')->where('sub_id', '=' , $followed_id) -> orwhere( 'sub_id','=',9)->get();//フォローしている人たちのidリストを条件にしてそのアカウントの投稿を取得する
+        array_push($followed_id, $sub->id);
         
         $posts = Post::with('sub')->where(function ($posts) use ($followed_id){
             $i = 0;
@@ -110,10 +110,15 @@ class SubuserController extends Controller
     public function follow(Sub $sub, Sub $follow, Follow $follows)
     {
         //新規フォローを登録する
-        $follows['following_id'] = $sub -> id;
-        $follows['followed_id'] = $follow -> id;
-        $follows -> save();
-        return redirect("/" . $sub->id . "/index");
+        $f = Follow::where(['following_id' => $sub->id, 'followed_id' => $follow -> id]) -> exists();//すでにフォローしているのかどうかを確認する
+        if($f == true){
+            return redirect("/" . $sub->id . "/index");//何も処理をせずにホーム画面へ戻る
+        }else{
+            $follows['following_id'] = $sub -> id;
+            $follows['followed_id'] = $follow -> id;
+            $follows -> save();
+            return redirect("/" . $sub->id . "/index");//フォローの登録をしてホーム画面へ戻る
+        }
     }
     
     public function showfollows(Sub $sub, Follow $following)
@@ -123,10 +128,29 @@ class SubuserController extends Controller
         return view('subusers.showfollows') -> with(['following' => $following]);
     }
     
-    /*
-    public function deletepost(Post $post, Sub $sub)
+    public function search(Sub $sub)
     {
-        
+        $categories = Category::all();
+        return view('subusers.search') -> with(['sub' => $sub,'categories' => $categories]);
     }
-    */
+    
+    public function delfollow(Sub $sub, Sub $follow)//フォローを削除する
+    {
+        Follow::where(['following_id' => $sub->id, 'followed_id' => $follow->id]) -> delete();
+        return redirect('/' . $sub->id . "/index");
+    }
+    
+    public function delpost(Sub $sub,Post $post)
+    {
+        $post -> delete();
+        return redirect('/' . $sub->id . "/profile/" . $sub->id);
+    }
+    
+    public function showallposts(Sub $sub)
+    {
+        $post = Post::withWhereHas('sub', function ($query) {
+            $query->where('seacret', 0);
+        }) -> orderby('updated_at', 'DESC') -> paginate(30);//鍵垢になっているポストを取得しないように設定してからデータを取得している
+        return view('subusers.showallposts')->with(["posts"=>$post, 'sub' => $sub]);
+    }
 }

@@ -23,9 +23,22 @@
                     <p>
                         @foreach($posts as $post)
                             <p style="padding: 5px 7px;">{{$post -> content}}</p>
+                            <form action="/{{$sub->id}}/delpost/{{$post->id}}" id="form_{{ $post->id }}" method="POST">
+                                @csrf
+                                @method('DELETE')
+                                <button type="button" onclick="deletePost({{ $post->id }})">↑この投稿を削除</button>
+                            </form>
                         @endforeach
                     </p>
                 </div>
+                <script>
+                    function deletePost(id) {
+                        'use strict'
+                        if (confirm('削除すると復元できません。\n本当に削除しますか？')) {
+                        document.getElementById(`form_${id}`).submit();
+                        }
+                    }
+                </script>
             </body>
     </x-app-layout>
 </html>

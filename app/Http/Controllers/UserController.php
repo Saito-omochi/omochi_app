@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use App\Models\Sub;
 use App\Models\Category;
+use App\Models\Post;
 
 class UserController extends Controller
 {
@@ -35,5 +36,13 @@ class UserController extends Controller
         $userid = Auth::id();//現在認証しているユーザーのidを取得する
         $subs = Sub::where('user_id', $userid)-> get();//現在認証している親ユーザーのidに紐づけられたサブユーザーをすべて取得
         return view('users.select')->with(['subs' => $subs]);//
+    }
+    
+    public function show(Post $posts)
+    {
+        $posts = Post::withWhereHas('sub', function ($query) {
+            $query->where('user_id', Auth::id());
+        }) -> orderby('updated_at', 'DESC') -> paginate(30);
+        return view('users.show') -> with(['posts' => $posts]);
     }
 }
