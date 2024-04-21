@@ -14,9 +14,9 @@
                     <h class="title">投稿作成画面</h>
                     <div>
                         <p>今選択しているユーザー</p>
-                        <p><img src="{{$sub->icon}}"alt="default_icon" />　{{$sub->name}}</p>
+                        <p><img src="{{$sub->icon}} "alt="default_icon" width ="50px" height="50px" />{{$sub->name}}</p>
                         <p><a href=/profile/select>ユーザー選択画面へ</a></p>
-                        <p><a href="/{{$sub->id}}/profile">プロフィール画面へ</a></p>
+                        <p><a href="/{{$sub->id}}/profile/{{$sub->id}}">プロフィール画面へ</a></p>
                     </div>
                     <p>投稿内容</p>
                     <p><textarea required name="post[content]" maxlength="300"/></textarea></p>
