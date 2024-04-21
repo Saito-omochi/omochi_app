@@ -29,7 +29,7 @@ class UserController extends Controller
         $input = $request['user'];
         $input['user_id'] = Auth::id();
         $img_url = Cloudinary::upload($request->file('img')->getRealPath()) -> getSecurePath();
-        $imput += ['icon' => $img_url];
+        $input += ['icon' => $img_url];
         $sub->fill($input)->save();
         return redirect('/profile/select');
     }
