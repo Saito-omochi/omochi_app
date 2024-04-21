@@ -11,7 +11,7 @@
             <body>
                 <div class="header">
                     <p>
-                        <img src="{{$sub -> icon}}" alt="アイコン" />
+                        <img src="{{$sub->icon}}" alt="画像が読み込めません" width ="50px" height="50px" />
                         {{$sub->profiletext}}
                     </p>
                     <p><a href="/{{$sub->id}}/create">新規投稿作成</a></p>
@@ -23,10 +23,13 @@
                     <p>
                         @foreach($posts as $post)
                             <div style = "padding: 10px 10px;">
+                                <img src="{{$post->sub->icon}}" alt="画像が読み込めません" width ="50px" height="50px" />
                                 <small style="padding: 5px 7px;"><a href="/{{$sub->id}}/profile/{{$post->sub->id}}">{{$post->sub->name}}</a></small>
                                 <p style = "padding: 1px 20px;">{{$post -> content}}</p>
                                 @if($post->sub_id == $sub->id)
                                     <form action="/{{$sub->id}}/delpost/{{$post->id}}" id="form_{{ $post->id }}" method="POST">
+                                        @csrf
+                                        @method("DELETE")
                                         <button type="button" onclick="deletePost({{ $post->id }})">↑この投稿を削除</button>
                                     </form>
                                 @endif

@@ -12,7 +12,7 @@
                 <form action=/sub/edit/update method="Post" enctype="multipart/form-data">
                     <div>
                         <p>アイコンアップロード</p>
-                        <input type="file" name="icon" />
+                        <input type="file" name="img" />
                         <p>変更前のアイコン</p>
                         <img src="{{asset('storage/icon/' . $sub->icon)}}" width ="50px" height="50px">
                     </div>

@@ -10,6 +10,7 @@ use App\Models\Sub;
 use App\Models\Post;
 use App\Models\Category;
 use Illuminate\Support\Facades\DB;
+use Cloudinary;
 
 
 class SubuserController extends Controller
@@ -59,7 +60,7 @@ class SubuserController extends Controller
                 $posts -> $where("sub_id", '=', $id);
                 //dd($posts);
             }
-        })->get();
+        })->orderby('updated_at', 'DESC')->get();
         
         //dd($posts);
         return view('subusers.index') -> with(['sub' => $sub, 'posts' => $posts, 'follows' => $follows]);
@@ -93,12 +94,12 @@ class SubuserController extends Controller
     
     public function update(Request $request, Sub $sub)
     {
-        $img = $request -> file('icon');
-        if($img != null){
-            $path = $img -> store('public/icon');
-            $sub -> icon = basename($path);
-        }else{
-            $sub->icon="default.png";
+        //アイコン保存
+        if($request -> file('img') != null){
+            $img_url = Cloudinary::upload($request->file('img')->getRealPath()) -> getSecurePath();
+            $input += ['icon' => $img_url];
+        }else{//何も登録されなかった場合は、前のアイコンを引き継ぐ。
+            $input['icon'] = $sub->icon;
         }
         
         $input = $request['user'];

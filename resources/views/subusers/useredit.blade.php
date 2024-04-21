@@ -9,13 +9,17 @@
         <x-slot>
         </x-slot>
             <body>
-                <form action="/{{$sub->id}}/profile/update" method="POST">
+                <form action="/{{$sub->id}}/profile/update" method="POST" enctype="multipart/form-data">
                     @csrf
                     <h class="title">サブユーザープロフィール編集画面</h>
-                    <p>変更前のアイコン</p>
-                        <img src="{{asset('storage/icon/' . $sub->icon)}}" width ="50px" height="50px">
                     <p>アイコンアップロード</p>
-                    <input type="file" name="icon" />
+                    <p>
+                        現在のアイコン
+                        <img src="{{$sub->icon}}" alt="画像が読み込めません" width ="100px" height="100px"/>
+                    </p>
+                    <div class="img">
+                        <input type="file" name="img" />
+                    </div>
                     <p>name（英字8~20文字）<input type="text" id="name" name="user[name]" required minlength="8" maxlength="20" size=20 value={{$sub -> name}} /></p>
                     <p>プロフィール文<textarea name="user[profiletext]">{{$sub->profiletext}}</textarea></p>
                     <p>seacret(鍵垢)

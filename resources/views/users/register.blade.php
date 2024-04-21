@@ -9,12 +9,15 @@
         <x-slot>
         </x-slot>
             <body>
-                <form action=/profile/subregister method="POST">
+                <form action=/profile/subregister method="POST" enctype="multipart/form-data">
                     @csrf
                     <h class="title">サブユーザー登録画面</h>
                     <div>
                         <p>あなたの親ユーザー</p>
                         <p>{{$user->id}}, {{$user->name}}</p>
+                    </div>
+                    <div class="img">
+                        <input type="file" name="img">
                     </div>
                     <p>name（英字8~20文字）<input type="text" id="name" name="user[name]" required minlength="8" maxlength="20" size=20 /></p>
                     <p><textarea name="user[profiletext]" required>sample text</textarea></p>

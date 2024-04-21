@@ -11,7 +11,7 @@
             <body>
                 <div class="header">
                     <p>
-                        <img src="{{asset('storage/icon/' . $sub->icon)}}" width ="50px" height="50px">
+                        <img src="{{$sub->icon}}" alt="画像が読み込めません" width ="50px" height="50px" />
                         {{$sub->profiletext}}
                     </p>
                     <p><a href="/{{$sub->id}}/profile/edit">プロフィール編集画面へ</a></p>
@@ -22,7 +22,11 @@
                 <div style="padding: 10px 14px;">
                     <p>
                         @foreach($posts as $post)
-                            <p style="padding: 5px 7px;">{{$post -> content}}</p>
+                            <p style="padding: 5px 7px;">
+                                <img src="{{$sub->icon}}" alt="画像が読み込めません" width ="50px" height="50px" style="white-space: nowrap;"/>
+                                {{$post -> content}}
+                            </p>
+                            
                             <form action="/{{$sub->id}}/delpost/{{$post->id}}" id="form_{{ $post->id }}" method="POST">
                                 @csrf
                                 @method('DELETE')
