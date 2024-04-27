@@ -43,5 +43,10 @@
                 {{ __('Log in') }}
             </x-primary-button>
         </div>
+        
+        <!--registerへのリンク-->
+        <div>
+            <p class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"><a href="/register">register</a></p>
+        </div>
     </form>
 </x-guest-layout>

@@ -7,11 +7,14 @@
     <title>home</title>
 </head>
     <x-app-layout>
-        <x-slot>
+        <x-slot name="header">
+        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+            {{ __('Home') }}
+        </h2>
         </x-slot>
             <body>
-                <div class="header">
-                    <p>
+                <div class="header" style="padding: 10px 30px;">
+                    <p  class="border-b-4">
                         <img src="{{$sub->icon}}" alt="画像が読み込めません" width ="50px" height="50px" />
                         {{$sub->profiletext}}
                     </p>

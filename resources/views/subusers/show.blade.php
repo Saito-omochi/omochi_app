@@ -7,18 +7,23 @@
     <link rel="stylesheet" href="/public/css/posts.css" type="text/css">
 </head>
     <x-app-layout>
-        <x-slot>
+        <x-slot name="header">
+        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+            {{ __('プロフィール') }}
+        </h2>
         </x-slot>
             <body>
                 <div class="header">
-                    <p>
+                    <p style = "padding: 10px 30px;" class="post border-b-4">
                         <img src="{{$sub->icon}}" alt="画像が読み込めません" width ="50px" height="50px" />
                         {{$sub->profiletext}}
                     </p>
-                    <p><a href="/{{$sub->id}}/profile/edit">プロフィール編集画面へ</a></p>
-                    <p><a href="/{{$sub->id}}/create">新規投稿作成</a></p>
-                    <p><a href="/{{$sub->id}}/showfollows">フォロー一覧</a></p>
-                    <p><a href="/{{$sub->id}}/index">ホーム画面へ</a></p>
+                    <div style="padding: 10px 30px">
+                        <p><a href="/{{$sub->id}}/profile/edit">プロフィール編集画面へ</a></p>
+                        <p><a href="/{{$sub->id}}/create">新規投稿作成</a></p>
+                        <p><a href="/{{$sub->id}}/showfollows">フォロー一覧</a></p>
+                        <p><a href="/{{$sub->id}}/index">ホーム画面へ</a></p>
+                    </div>
                 </div>
                 <div style="padding: 10px 14px;">
                     <p>
