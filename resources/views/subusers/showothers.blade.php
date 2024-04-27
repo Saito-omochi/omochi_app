@@ -12,7 +12,7 @@
             <body>
                 <div class="header">
                     <p>
-                        <img src="{{$subview -> icon}}" alt="アイコン" />
+                        <img src="{{$subview -> icon}}" alt="アイコン" width ="50px" height="50px" />
                         {{$subview->profiletext}}
                     </p>
                     @if($tf==FALSE)

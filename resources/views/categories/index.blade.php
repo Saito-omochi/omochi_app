@@ -6,12 +6,15 @@
     <title>カテゴリーで検索</title>
 </head>
     <x-app-layout>
-        <x-slot>
+        <x-slot name="header">
+            <h1 class="font-semibold text-xl text-gray-800 leading-tight">
+                {{ __('カテゴリー表示') }}
+            </h1>
         </x-slot>
             <body>
-                <h1>{{$category->name}}_カテゴリー</h1>
                 <p><a href="/{{$sub->id}}/index">ホーム画面へ</a></p>
                 <p><a href="/{{$sub->id}}/search">カテゴリー検索画面に戻る</a></p>
+                <h2 class="font-semibold text-xl text-gray-800 leading-tight">{{$category->name}}_カテゴリー</h1>
                 <div style="padding: 10px 14px;">
                     <p>
                         @foreach($posts as $post)

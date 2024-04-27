@@ -50,3 +50,15 @@
         </div>
     </form>
 </x-guest-layout>
+
+<div class="max-w-7xl mx-auto sm:px-6 lg:px-8" style="padding: 10px 20px;">
+    <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg" style="margin-top: 20px;">
+        <div class="p-6 text-gray-900">
+            <p>ようこそ！　使い方！</p>
+            <p>１．親ユーザー（すべての自分のアカウントをまとめて管理するための情報）を登録します</p>
+            <p>２．サブユーザーを作ります</p>
+            <p>３．投稿したりしてみます</p>
+            <p>４．ほかの用途のアカウントが作りたくなったら、[Menu]->[新規サブユーザー登録]でサブユーザーを作ります</p>
+        </div>
+    </div>
+</div>
