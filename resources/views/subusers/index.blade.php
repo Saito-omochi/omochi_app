@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href=".../resources/css/app.css" type="text/css">
     <title>home</title>
 </head>
     <x-app-layout>
@@ -15,14 +16,12 @@
                         {{$sub->profiletext}}
                     </p>
                     <p><a href="/{{$sub->id}}/create">新規投稿作成</a></p>
-                    <p><a href="/{{$sub->id}}/profile/{{$sub->id}}">自分のプロフィール画面へ</a></p>
-                    <p><a href="/{{$sub->id}}/showallposts">全ユーザーの投稿を最新順で表示</a></p>
-                    <p><a href="/{{$sub->id}}/search">カテゴリー検索へ</a></p>
+                    <p><a href="/{{$sub->id}}/menu">サブユーザーメニュー・機能一覧へ</a></p>
                 </div>
                 <div style="padding: 10px 14px;">
                     <p>
                         @foreach($posts as $post)
-                            <div style = "padding: 10px 10px;">
+                            <div style = "padding: 10px 10px;" class="post border-b-4">
                                 <img src="{{$post->sub->icon}}" alt="画像が読み込めません" width ="50px" height="50px" />
                                 <small style="padding: 5px 7px;"><a href="/{{$sub->id}}/profile/{{$post->sub->id}}">{{$post->sub->name}}</a></small>
                                 <p style = "padding: 1px 20px;">{{$post -> content}}</p>

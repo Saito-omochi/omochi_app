@@ -12,7 +12,7 @@
                 <h1>サブユーザー選択（選択するユーザーの名前をクリックしてください）</h1>
                 <div>
                     @foreach($subs as $sub)
-                        <a href="/{{$sub->id}}/index">{{$sub->name}}</a>
+                        <p><a href="/{{$sub->id}}/index">{{$sub->name}}</a></p>
                     @endforeach
                 </div>
             </body>

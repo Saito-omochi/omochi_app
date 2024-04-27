@@ -11,7 +11,7 @@
         <p><a href="/{{$sub->id}}/index">ホーム画面へ戻る</a></p>
             <body>
                 @foreach($categories as $category)
-                    <p><a href="/{{$sub->id}}/search/{{$category->id}}">{{$category->name}}</a></p>
+                    <p style = "padding: 10px 20px;"><a href="/{{$sub->id}}/search/{{$category->id}}">{{$category->name}}</a></p>
                 @endforeach
             </body>
     </x-app-layout>

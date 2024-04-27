@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>サブアカウント プロフィール画面</title>
+    <link rel="stylesheet" href="/public/css/posts.css" type="text/css">
 </head>
     <x-app-layout>
         <x-slot>
@@ -22,16 +23,18 @@
                 <div style="padding: 10px 14px;">
                     <p>
                         @foreach($posts as $post)
-                            <p style="padding: 5px 7px;">
-                                <img src="{{$sub->icon}}" alt="画像が読み込めません" width ="50px" height="50px" style="white-space: nowrap;"/>
-                                {{$post -> content}}
-                            </p>
+                            <div style = "padding: 10px 10px;" class="post border-b-4">
+                                <p style="padding: 5px 7px;">
+                                    <img src="{{$sub->icon}}" alt="画像が読み込めません" width ="50px" height="50px" style="white-space: nowrap;"/>
+                                    {{$post -> content}}
+                                </p>
                             
-                            <form action="/{{$sub->id}}/delpost/{{$post->id}}" id="form_{{ $post->id }}" method="POST">
-                                @csrf
-                                @method('DELETE')
-                                <button type="button" onclick="deletePost({{ $post->id }})">↑この投稿を削除</button>
-                            </form>
+                                <form action="/{{$sub->id}}/delpost/{{$post->id}}" id="form_{{ $post->id }}" method="POST">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="button" onclick="deletePost({{ $post->id }})">↑この投稿を削除</button>
+                                </form>
+                            </div>
                         @endforeach
                     </p>
                 </div>

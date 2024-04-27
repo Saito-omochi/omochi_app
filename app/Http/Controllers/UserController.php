@@ -48,4 +48,10 @@ class UserController extends Controller
         }) -> orderby('updated_at', 'DESC') -> paginate(30);
         return view('users.show') -> with(['posts' => $posts]);
     }
+    
+    public function menu()
+    {
+        $sub = Sub::where('user_id', Auth::id()) -> get();
+        return view('users.menu')->with(["subs"=>$sub]);
+    }
 }

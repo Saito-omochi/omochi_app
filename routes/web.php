@@ -28,7 +28,7 @@ Route::get('/dashboard', function () {
 
 
 Route::get('/profile/index', [UserController::class, 'index'])->name('profile.index');
-Route::get('/profile/select', [UserController::class, 'select']);
+Route::get('/profile/select', [UserController::class, 'select'])->name('subselect');
 
 Route::middleware('auth')->group(function () {
     
@@ -36,17 +36,19 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
-    Route::get('/profile/subregister', [UserController::class, 'subregister']);
+    Route::get('/profile/subregister', [UserController::class, 'subregister'])->name('profile.subregister');
     Route::get('/profile/show', [UserController::class, 'show']);
+    Route::get('/menu', [UserController::class, 'menu'])->name('menu');
     Route::post('/profile/subregister', [UserController::class, 'store']);
     
     Route::get('/{sub}/profile/edit', [SubuserController::class, 'profileedit']);
     Route::get('/{sub}/profile/{subview}', [SubuserController::class, 'show']);
-    Route::get('/{sub}/index', [SubuserController::class, 'index']);
+    Route::get('/{sub}/index', [SubuserController::class, 'index'])->name('home');
     Route::get('/{sub}/create', [SubuserController::class, 'create']);
-    Route::get('{sub}/showfollows', [SubuserController::class, 'showfollows']);
-    Route::get('{sub}/showallposts', [SubuserController::class, 'showallposts']);
-    Route::get('{sub}/search', [SubuserController::class, 'search']);
+    Route::get('/{sub}/showfollows', [SubuserController::class, 'showfollows']);
+    Route::get('/{sub}/showallposts', [SubuserController::class, 'showallposts'])->name('profile.index');
+    Route::get('/{sub}/search', [SubuserController::class, 'search']);
+    Route::get('/{sub}/menu', [SubuserController::class, 'menu']);
     Route::post('/{sub}/store', [SubuserController::class, 'store']);
     Route::post('/{sub}/profile/{post}/edit', [SubuserController::class, 'edit']);
     Route::post('/{sub}/profile/update', [SubuserController::class, 'update']);

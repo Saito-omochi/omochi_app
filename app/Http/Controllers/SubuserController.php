@@ -154,4 +154,9 @@ class SubuserController extends Controller
         }) -> orderby('updated_at', 'DESC') -> paginate(30);//鍵垢になっているポストを取得しないように設定してからデータを取得している
         return view('subusers.showallposts')->with(["posts"=>$post, 'sub' => $sub]);
     }
+    
+    public function menu(Sub $sub)
+    {
+        return view('subusers.menu')->with(["sub"=>$sub]);
+    }
 }

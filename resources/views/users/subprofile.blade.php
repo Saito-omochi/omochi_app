@@ -17,9 +17,9 @@
                 </dev>
                 <dev class="post">
                     @foreach
-                        <p></p>
-                        <p>{{$post->content}}</p>
-                        <p></p>
+                        <div class="post">
+                            <p>{{$post->content}}</p>
+                        </div>
                     @endforeach
                 </dev>
                 <dev class="fotter">

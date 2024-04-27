@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/public/css/posts.css" type="text/css">
     <title>サブアカウント プロフィール画面</title>
 </head>
     <x-app-layout>
@@ -30,11 +31,13 @@
                 </div>
                 <div>
                     <p></p>
-                    <p>
-                        @foreach($posts as $post)
-                            <p>{{$post -> content}}</p>
-                        @endforeach
-                    </p>
+                    <div class="post">
+                        <p>
+                            @foreach($posts as $post)
+                                <p style = "padding: 10px 10px;" class="post border-b-4">{{$post -> content}}</p>
+                            @endforeach
+                        </p>
+                    </div>
                     <p></p>
                 </div>
             </body>
