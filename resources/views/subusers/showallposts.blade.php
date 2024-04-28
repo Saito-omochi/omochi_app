@@ -7,10 +7,7 @@
     <title>サブアカウント プロフィール画面</title>
 </head>
     <x-app-layout>
-        <x-slot name="header">
-            <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-                {{ __('全ユーザーの投稿') }}
-            </h2>
+        <x-slot>
         </x-slot>
             <body>
                 <a href="/{{$sub->id}}/index">ホーム画面へ</a>
