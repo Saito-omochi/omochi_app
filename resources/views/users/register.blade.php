@@ -32,7 +32,9 @@
                                 <option value=1>鍵垢on(相互フォロー限定公開)</option>
                             </select>
                         </p>
-                        <input type="submit" value="送信"/>
+                        <x-primary-button class="ml-3">
+                            <input type="submit" value="送信"/>
+                        </x-primary-button>
                     </div>
                 </form>
             </body>

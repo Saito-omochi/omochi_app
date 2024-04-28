@@ -12,7 +12,7 @@
                 <!--メニュー追加-->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-nav-link :href="route('menu')">
-                        {{ __('Menu') }}
+                        {{ __('親アカウントMenu') }}
                     </x-nav-link>
                 </div>
             </div>

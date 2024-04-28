@@ -32,10 +32,14 @@
                                 <option value=2 hidden desabled selected>選択してください</option>
                             </select>
                         </p>
-                        <input type="submit" value="送信"/>
+                        <x-primary-button class="ml-3">
+                            <input type="submit" value="送信"/>
+                        </x-primary-button>
                     </form>
                 </div>
-                <p style="padding: 10px 20px;"><a href="/{{$sub->id}}/index">ホーム画面へ戻る</a></p>
+                <x-primary-button class="ml-3">
+                    <p><a href="/{{$sub->id}}/index">ホーム画面へ戻る</a></p>
+                </x-primary-button>
             </body>
     </x-app-layout>
 </html>
