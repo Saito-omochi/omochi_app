@@ -35,7 +35,7 @@
                         @foreach($posts as $post)
                             <div style = "padding: 10px 10px;" class="post border-b-4">
                                 <img src="{{$post->sub->icon}}" alt="画像が読み込めません" width ="50px" height="50px" />
-                                <small style="padding: 5px 7px;"><a href="/{{$sub->id}}/profile/{{$post->sub->id}}">{{$post->sub->name}}</a></small>
+                                <small class="underline" style="padding: 5px 7px;"><a href="/{{$sub->id}}/profile/{{$post->sub->id}}">{{$post->sub->name}}</a></small>
                                 <p style = "padding: 1px 20px;">{{$post -> content}}</p>
                                 @if($post->sub_id == $sub->id)
                                     <form action="/{{$sub->id}}/delpost/{{$post->id}}" id="form_{{ $post->id }}" method="POST">
