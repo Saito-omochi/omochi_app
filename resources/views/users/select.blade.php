@@ -13,10 +13,10 @@
         </x-slot>
             <body>
                 <h1>（選択するユーザーの名前をクリックしてください）</h1>
-                <div>
+                <div style="padding: 10px 50px;">
                     @foreach($subs as $sub)
                         <img src="{{$sub->icon}}" alt="画像が読み込めません" width ="50px" height="50px" />
-                        <p><a href="/{{$sub->id}}/index">{{$sub->name}}</a></p>
+                        <div style="padding: 10px 5px;"><x-primary-button class="ml-3"><a href="/{{$sub->id}}/index">{{$sub->name}}</a></x-primary-button></div>
                     @endforeach
                 </div>
             </body>

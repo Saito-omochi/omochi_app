@@ -24,7 +24,7 @@ class UserController extends Controller
         return view('users.register')->with(['user'=>$user]); //viewに渡す
     }
     
-    public function store(Request $request, Sub $sub)
+    public function store(Request $request, Sub $sub)//登録したサブユーザー情報をDBへしまう。
     {
         $input = $request['user'];
         $input['user_id'] = Auth::id();
