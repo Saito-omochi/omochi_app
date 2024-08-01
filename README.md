@@ -18,10 +18,10 @@ https://omochisns-ede37a3250b1.herokuapp.com/login
 
 
 実際にログインした直後の画面です。すでにサブユーザーを２つ作った状態です。新しく作るためには新規サブユーザー登録を押していただくと新しい投稿用のサブユーザーアカウントが作れます
-https://github.com/user-attachments/assets/249ea4c8-5dee-4795-b5e6-a1c6797e2195
+![スクリーンショット 2024-08-01 184320](https://github.com/user-attachments/assets/249ea4c8-5dee-4795-b5e6-a1c6797e2195)
 
 サブユーザーホーム画面です。自分の投稿、フォローしている人の投稿が見られます
-https://github.com/user-attachments/assets/b043a273-459c-4d10-a085-23c2a44a21d2
+![スクリーンショット 2024-08-01 184659](https://github.com/user-attachments/assets/b043a273-459c-4d10-a085-23c2a44a21d2)
 
 サブユーザーの機能一覧の画面です。ここから様々な機能が利用できます
-https://github.com/user-attachments/assets/42d25b48-6ac1-46f5-a81b-6ccd1db22f29
+![スクリーンショット 2024-08-01 184706](https://github.com/user-attachments/assets/42d25b48-6ac1-46f5-a81b-6ccd1db22f29)
