@@ -95,6 +95,8 @@ class SubuserController extends Controller
     public function update(Request $request, Sub $sub)
     {
         //アイコン保存
+        $input = $request['user'];
+        
         if($request -> file('img') != null){
             $img_url = Cloudinary::upload($request->file('img')->getRealPath()) -> getSecurePath();
             $input += ['icon' => $img_url];
@@ -102,7 +104,6 @@ class SubuserController extends Controller
             $input['icon'] = $sub->icon;
         }
         
-        $input = $request['user'];
         
         $sub -> fill($input) -> save();
         return redirect( $sub->id . "/profile/" . $sub->id);
